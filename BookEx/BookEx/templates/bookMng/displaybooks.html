@@ -19,15 +19,32 @@ Display Books
 
 <table align="center" border="2"  width="400">
     {% for book in books %}
+       <thead>
        <tr>
-           <td>
-               <a href="book_detail/{{ book.id }}"> {{ book.name }}</a>
-           </td>
-
-           <td>
-               {{ book.price }}
-           </td>
+           <th>Name</th>
+           <th>Cover</th>
+           <th>Price</th>
+           <th>Website</th>
+           <th>Writer</th>
+           <th>Publish Date</th>
+           <th>Wish List</th>
+           <th>Shopping Cart</th>
        </tr>
+       </thead>
+
+        <tbody>
+         <tr>
+             <td><a href="book_detail/{{ book.id }}"> {{ book.name }}</a></td>
+             <td><img src="{% static book.pic_path %}" width="100" height="100"/></td>
+             <td>{{ book.price }}</td>
+             <td>{{ book.username }}</td>
+             <td>{{ book.web }}</td>
+             <td>{{ book.publishdate }}</td>
+             <td>add buttons</td>
+
+         </tr>
+
+        </tbody>
     {% endfor %}
 </table>
 {% endblock content %}
