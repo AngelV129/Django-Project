@@ -14,6 +14,8 @@ from .models import MainMenu
 from .forms import BookForm
 from django.http import HttpResponseRedirect
 from .models import Book
+from .models import Comment
+from .forms import CommentForm
 
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -85,12 +87,22 @@ class Register(CreateView):
 @login_required(login_url=reverse_lazy('login'))
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
+    comments = Comment.objects.filter(book_id=book_id)
     book.pic_path = book.picture.url[14:]
+
+    if request.method == 'POST':
+        if CommentForm(request.POST).is_valid():
+            comment = CommentForm(request.POST).save(commit=False)
+            comment.book_id = book_id
+            comment.username = request.user
+            comment.save()
+
     return render(request,
                   "bookMng/book_detail.html",
                   {
                       'item_list': MainMenu.objects.all(),
-                      'book': book
+                      'book': book,
+                      'comments': comments,
                   }
                   )
 
@@ -157,3 +169,5 @@ def search_books(request):
                       })
     else:
         return render(request, 'bookMng/search_books.html')
+
+

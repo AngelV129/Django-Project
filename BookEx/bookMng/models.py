@@ -23,3 +23,16 @@ class Book(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+class Comment(models.Model):
+    book_id = models.IntegerField(blank=True, null=True)
+    username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    content = models.TextField(max_length=1000)
+    publishdate = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+
