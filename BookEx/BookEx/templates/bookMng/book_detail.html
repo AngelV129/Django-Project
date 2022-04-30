@@ -15,32 +15,77 @@ Book Detail
 {% endblock sidenav %}
 
 {% block content %}
+<br>
 <h1 align="center"> Book Detail </h1>
-
-<table align="center" border="2"  width="400">
-
-       <tr>
-           <td>
-               {{ book.name }}
-           </td>
-           <td>
-               <img src="{% static book.pic_path %}" width="100" height="100"/>
-           </td>
-           <td>
-               {{ book.price }}
-           </td>
-           <td>
-               {{ book.username }}
-           </td>
-       </tr>
+<br>
+<br>
+<div class="container">
+    <table class="table table-striped">
         <tr>
-            <td>
-                {{ book.web }}
-            </td>
-            <td>
-                {{ book.publishdate }}
-            </td>
+            <th colspan='2' ><img src="{% static book.pic_path %}" width="150" height="200" class="rounded mx-auto d-block"/></th>
         </tr>
+        <tr>
+            <td>Name: </td>
+            <td>{{ book.name }}</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>$ {{ book.price }}</td>
+        </tr>
+        <tr>
+            <td>Website: </td>
+            <td>{{ book.web }}</td>
+        </tr>
+        <tr>
+            <td>Added By: </td>
+            <td>{{ book.username }}</td>
+        </tr>
+        <tr>
+            <td>Date Added: </td>
+            <td>{{ book.publishdate }}</td>
+        </tr>
+    </table>
+</div>
 
-</table>
+{% if comments %}
+<div class="container">
+    <h5 class="mt-4" align="center">Comments Section</h5>
+    <table class="table table-striped table-borderless bg-light mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center" scope="col">User</th>
+                <th class="text-center" scope="col">Comment</th>
+                <th class="text-center" scope="col">Posted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comment in comments %}
+            <tr>
+                <td class="text-center align-middle">
+                    {{ comment.username }}
+                </td>
+                <td class="text-center align-middle">
+                    {{ comment.content}}
+                </td>
+                <td class="text-center align-middle">
+                    {{ comment.publishdate }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<div class = "container">
+    <div class="col-md-8">
+        <form action="" enctype="multipart/form-data" method="post" novalidate>
+            {% csrf_token %}
+            <label for="id_content">Add Comment: </label>
+            <textarea class="form-control" id="id_content" name="content" required></textarea>
+            <button type="submit" class="btn btn-primary mt-3">Add Comment</button>
+        </form>
+    </div>
+</div>
+
 {% endblock content %}
