@@ -44,6 +44,16 @@ Book Detail
             <td>Date Added: </td>
             <td>{{ book.publishdate }}</td>
         </tr>
+        <tr>
+            {% if book.username != request.user %}
+            <td>Move to: </td>
+                {% if book.id not in wish_list_ids %}
+                <td><a href="/add_to_wish_list/{{ book.id }}">Wish List</a>
+                </td>
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
     </table>
 </div>
 

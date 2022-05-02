@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+wish List
+{% endblock title %}
+
+
+{% block content %}
+<h1 align="center"> Wish List </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cover</th>
+            <th>Seller</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <td>
+                <a href="/book_details/{{ book.id }}">
+                    {{ book.name }}
+                </a>
+            </td>
+            <td>
+                <img src="{% static book.pic_path %}" width="60" height="90">
+            </td>
+            <td>
+                {{ book.username }}
+            </td>
+            <td>
+                &dollar;{{ book.price }}
+            </td>
+            <td>
+                <a href="/remove_from_wish_list/{{ book.id }}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
