@@ -14,6 +14,7 @@ Group project for Software Engineering course at California State University Los
     + Display Books
     + Book Detail
     + shopping cart
+    + wish List
     + Messege Box with comments
 
 https://www.w3schools.com/css/css_navbar.asp (Links to an external site.)
@@ -24,12 +25,10 @@ https://www.w3schools.com/bootstrap/bootstrap_navbar.asp
 
 Choose 3 feature from below:
 
-(4) comments -- Needs to be assigned (Can be done with comments)
+(4) comments --Done
 
-(5) rate
+(5) wish list --Done
 
-(6) message box
+(6) shopping cart -- in progress
 
-(7) shopping cart -- needs to be assigned
-
-(8) favorite list -- Needs to be assigned
+(7) Registe -- Need be assigned
