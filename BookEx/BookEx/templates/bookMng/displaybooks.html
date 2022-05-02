@@ -27,6 +27,13 @@ Display Books
            <td>
                {{ book.price }}
            </td>
+            {% if book.username != request.user %}
+           <td>
+                {% if book.id not in wish_list_ids %}
+                <a href="add_to_wish_list/{{ book.id }}">Wish List</a>
+                {% endif %}
+            </td>
+            {% endif %}
        </tr>
     {% endfor %}
 </table>
