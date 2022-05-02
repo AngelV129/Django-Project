@@ -14,6 +14,7 @@ from .models import MainMenu
 from .forms import BookForm
 from django.http import HttpResponseRedirect
 from .models import Book
+from .models import ShoppingCart
 
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -85,12 +86,16 @@ class Register(CreateView):
 @login_required(login_url=reverse_lazy('login'))
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
+    shopping_cart = ShoppingCart.objects.filter(username=request.user)
     book.pic_path = book.picture.url[14:]
+
+
     return render(request,
                   "bookMng/book_detail.html",
                   {
                       'item_list': MainMenu.objects.all(),
-                      'book': book
+                      'book': book,
+                      'shopping_cart_ids': [b.b_id for b in shopping_cart]
                   }
                   )
 
@@ -161,8 +166,31 @@ def search_books(request):
 
 @login_required(login_url=reverse_lazy('login'))
 def shopping_cart(request):
-    cart = {}
-    return render(request, 'bookMng/shopping_cart.html', {
-                        'cart': cart
-                    })
+    shopping_cart = ShoppingCart.objects.filter(username=request.user)
+    books_to_buy = []
+    sum = 0
 
+    for book in shopping_cart:
+        book = Book.objects.get(id=book.b_id)
+        book.pic_path = book.picture.url[14:]
+        books_to_buy.append(book)
+        sum += book.price
+
+    return render(request,
+        'bookMng/shopping_cart.html',
+        {
+            'books': books_to_buy,
+            'sum': sum
+        })
+
+
+@login_required(login_url=reverse_lazy('login'))
+def add_to_cart(request, book_id):
+    ShoppingCart.objects.create(b_id=book_id, username=request.user)
+    return HttpResponseRedirect('/displaybooks')
+
+
+@login_required(login_url=reverse_lazy('login'))
+def remove_from_cart(request, book_id):
+    ShoppingCart.objects.get(b_id=book_id).delete()
+    return HttpResponseRedirect('/shopping_cart')

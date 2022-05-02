@@ -18,7 +18,6 @@ Book Detail
 <h1 align="center"> Book Detail </h1>
 
 <table align="center" border="2"  width="400">
-
        <tr>
            <td>
                {{ book.name }}
@@ -40,6 +39,16 @@ Book Detail
             <td>
                 {{ book.publishdate }}
             </td>
+            {% if book.username != request.user %}
+            <td>
+                {% if book.id not in shopping_cart_ids %}
+                <a href="/add_to_cart/{{ book.id }}">
+                    Add to Cart
+                </a>
+                {% endif %}
+                <br>
+            </td>
+            {% endif %}
         </tr>
 
 </table>
