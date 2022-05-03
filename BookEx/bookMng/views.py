@@ -14,10 +14,9 @@ from .models import MainMenu
 from .forms import BookForm
 from django.http import HttpResponseRedirect
 from .models import Book
-
 from .models import Comment
 from .forms import CommentForm
-
+from .models import WishList
 from .models import ShoppingCart
 
 
@@ -67,13 +66,15 @@ def postbook(request):
 @login_required(login_url=reverse_lazy('login'))
 def displaybooks(request):
     books = Book.objects.all()
+    wish_list = WishList.objects.filter(username=request.user)
     for b in books:
         b.pic_path = b.picture.url[14:]
     return render(request,
                   "bookMng/displaybooks.html",
                   {
                       'item_list': MainMenu.objects.all(),
-                      'books': books
+                      'books': books,
+                      'wish_list_ids': [b.b_id for b in wish_list]
                   }
                   )
 
@@ -214,4 +215,32 @@ def add_to_cart(request, book_id):
 def remove_from_cart(request, book_id):
     ShoppingCart.objects.get(b_id=book_id).delete()
     return HttpResponseRedirect('/shopping_cart')
+
+@login_required(login_url=reverse_lazy('login'))
+def wish_list(request):
+    wish_list = WishList.objects.filter(username=request.user)
+    books_to_save = []
+
+    for book in wish_list:
+        book = Book.objects.get(id=book.b_id)
+        book.pic_path = book.picture.url[14:]
+        books_to_save.append(book)
+
+    return render(request,
+        'bookMng/wish_list.html',
+        {
+            'books': books_to_save,
+        })
+
+
+@login_required(login_url=reverse_lazy('login'))
+def add_to_wish_list(request, book_id):
+    WishList.objects.create(b_id=book_id, username=request.user)
+    return HttpResponseRedirect('/displaybooks')
+
+
+@login_required(login_url=reverse_lazy('login'))
+def remove_from_wish_list(request, book_id):
+    WishList.objects.get(b_id=book_id).delete()
+    return HttpResponseRedirect('/wish_list')
 
