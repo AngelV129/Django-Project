@@ -92,7 +92,7 @@ class Register(CreateView):
 @login_required(login_url=reverse_lazy('login'))
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
-
+    wish_list = WishList.objects.filter(username=request.user)
     comments = Comment.objects.filter(book_id=book_id)
     book.pic_path = book.picture.url[14:]
 
@@ -111,10 +111,9 @@ def book_detail(request, book_id):
                   {
                       'item_list': MainMenu.objects.all(),
                       'book': book,
-
                       'comments': comments,
-
-                      'shopping_cart_ids': [b.b_id for b in shopping_cart]
+                      'shopping_cart_ids': [b.b_id for b in shopping_cart],
+                      'wish_list_ids': [b.b_id for b in wish_list]
 
                   }
                   )
