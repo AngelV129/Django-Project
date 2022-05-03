@@ -171,3 +171,13 @@ def search_books(request):
         return render(request, 'bookMng/search_books.html')
 
 
+<<<<<<< HEAD
+=======
+@login_required(login_url=reverse_lazy('login'))
+def shopping_cart(request):
+    cart = {}
+    return render(request, 'bookMng/shopping_cart.html', {
+                        'cart': cart
+                    })
+
+>>>>>>> sleepBranch
