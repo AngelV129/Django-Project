@@ -29,6 +29,6 @@ Choose 3 feature from below:
 
 (5) wish list --Done
 
-(6) shopping cart -- in progress
+(6) shopping cart -- Done
 
-(7) Registe -- Need be assigned
+(7) Registe --In process
