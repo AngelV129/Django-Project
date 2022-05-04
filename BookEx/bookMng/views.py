@@ -67,6 +67,7 @@ def postbook(request):
 def displaybooks(request):
     books = Book.objects.all()
     wish_list = WishList.objects.filter(username=request.user)
+    shopping_cart = ShoppingCart.objects.filter(username=request.user)
     for b in books:
         b.pic_path = b.picture.url[14:]
     return render(request,
@@ -74,7 +75,8 @@ def displaybooks(request):
                   {
                       'item_list': MainMenu.objects.all(),
                       'books': books,
-                      'wish_list_ids': [b.b_id for b in wish_list]
+                      'wish_list_ids': [b.b_id for b in wish_list],
+                      'shopping_cart_ids': [b.b_id for b in shopping_cart]
                   }
                   )
 

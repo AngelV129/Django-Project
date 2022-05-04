@@ -25,7 +25,6 @@ class Book(models.Model):
         return str(self.id)
 
 
-
 class Comment(models.Model):
     book_id = models.IntegerField(blank=True, null=True)
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
@@ -36,10 +35,8 @@ class Comment(models.Model):
         return str(self.id)
 
 
-
-
 class ShoppingCart(models.Model):
-    b_id = models.IntegerField(blank=True, null=True,)
+    b_id = models.IntegerField(blank=True, null=True, )
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -47,7 +44,7 @@ class ShoppingCart(models.Model):
 
 
 class WishList(models.Model):
-    b_id = models.IntegerField(blank=True, null=True,)
+    b_id = models.IntegerField(blank=True, null=True, )
     username = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

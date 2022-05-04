@@ -54,7 +54,7 @@ Book Detail
             {% if book.username != request.user %}
             <td rowspan="2">Move to: </td>
                 {% if book.id not in wish_list_ids %}
-                <td><a href="/add_to_wish_list/{{ book.id }}">Wish List</a>
+                <td><a href="/add_to_wish_list/{{ book.id }}">Favorite List</a>
                 </td>
                 {% endif %}
             </td>

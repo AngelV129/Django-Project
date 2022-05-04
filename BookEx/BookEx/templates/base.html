@@ -43,11 +43,11 @@
 {#        Navbar items#}
             <div class="collapse navbar-collapse ">
                 <ul class="navbar-nav  mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-warning" href="\displaybooks">Display Books</a>
+                    <li class="nav-item ">
+                        <a class="nav-link text-warning" href="\">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="\search_books">Search</a>
+                        <a class="nav-link text-warning" href="\displaybooks">Display Books</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-warning" href="\postbook">Post Book</a>
@@ -56,11 +56,12 @@
 {#                        <a class="nav-link text-warning" href="\faq">FAQ</a>#}
 {#                    </li>#}
                     <li class="nav-item">
+                        <a class="nav-link text-warning" href="\search_books">Search</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-warning" href="\about_us">About Us</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link text-warning" href="\">Home</a>
-                    </li>
+
                 </ul>
             </div>
             {# collapsable navbar#}
@@ -76,9 +77,9 @@
                                     My Books
                                 </a>
                             </li>
-                            <li>
-                                <a class="dropdown-item text-center" href="\messagebox\incoming">
-                                    Messages
+                             <li>
+                                <a class="dropdown-item text-center" href="\wish_list">
+                                    Favorite List
                                 </a>
                             </li>
                             <li>
@@ -86,11 +87,7 @@
                                     Shopping Cart
                                 </a>
                             </li>
-                            <li>
-                                <a class="dropdown-item text-center" href="\wish_list">
-                                    Wish List
-                                </a>
-                            </li>
+
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item text-center" href="{% url 'logout' %}?next=/">
@@ -100,7 +97,7 @@
                         </ul>
                     </div>
                 {% else %}
-                    Not Logged In
+                    {#Not Logged in#}
                     <a href="{% url 'login' %}?next=/">Login/Register</a>
                 {% endif %}
             </div>

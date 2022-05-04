@@ -30,10 +30,18 @@ Display Books
             {% if book.username != request.user %}
            <td>
                 {% if book.id not in wish_list_ids %}
-                <a href="add_to_wish_list/{{ book.id }}">Wish List</a>
+                <a href="add_to_wish_list/{{ book.id }}">Favorite List</a>
                 {% endif %}
             </td>
             {% endif %}
+           {% if book.username != request.user %}
+           <td>
+                 {% if book.id not in shopping_cart_ids %}
+                <a href="add_to_cart/{{ book.id }}">Shopping Cart</a>
+                {% endif %}
+            </td>
+            {% endif %}
+
        </tr>
     {% endfor %}
 </table>
