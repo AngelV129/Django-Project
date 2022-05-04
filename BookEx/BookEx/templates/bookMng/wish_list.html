@@ -10,34 +10,34 @@ wish List
 {% block content %}
 <h1 align="center"> Wish List </h1>
 
-<table>
-    <thead>
+<table  class="table table-hover table-borderless bg-light mt-4">
+    <thead  class="thead-light">
         <tr>
-            <th>Name</th>
-            <th>Cover</th>
-            <th>Seller</th>
-            <th>Price</th>
-            <th></th>
+            <th class="text-center" scope="col">Name</th>
+            <th class="text-center" scope="col">Cover</th>
+            <th class="text-center" scope="col">Seller</th>
+            <th class="text-center" scope="col">Price</th>
+            <th class="text-center" scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
     {% for book in books %}
         <tr>
-            <td>
-                <a href="/book_details/{{ book.id }}">
+            <td class="text-center align-middle">
+                <a href="/book_detail/{{ book.id }}">
                     {{ book.name }}
                 </a>
             </td>
             <td>
                 <img src="{% static book.pic_path %}" width="60" height="90">
             </td>
-            <td>
+            <td class="text-center align-middle">
                 {{ book.username }}
             </td>
-            <td>
+            <td class="text-center align-middle">
                 &dollar;{{ book.price }}
             </td>
-            <td>
+            <td class="text-center align-middle">
                 <a href="/remove_from_wish_list/{{ book.id }}">
                     Delete
                 </a>
