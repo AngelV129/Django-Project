@@ -22,37 +22,12 @@ Book Detail
 <br>
 <div class="container">
 <table class="table table-striped">
-       <tr>
-           <td>
-               {{ book.name }}
-           </td>
-           <th colspan='2' >
+
+       <tr rowspan="2" >
+
+           <td colspan='2' >
                <img src="{% static book.pic_path %}" width="150" height="200" class="rounded mx-auto d-block"/>
-           </th>
-           <td>
-               {{ book.price }}
            </td>
-           <td>
-               {{ book.username }}
-           </td>
-       </tr>
-        <tr>
-            <td>
-                {{ book.web }}
-            </td>
-            <td>
-                {{ book.publishdate }}
-            </td>
-            {% if book.username != request.user %}
-            <td>
-                {% if book.id not in shopping_cart_ids %}
-                <a href="/add_to_cart/{{ book.id }}">
-                    Add to Cart
-                </a>
-                {% endif %}
-                <br>
-            </td>
-            {% endif %}
 
         </tr>
         <tr>
@@ -77,13 +52,27 @@ Book Detail
         </tr>
         <tr>
             {% if book.username != request.user %}
-            <td>Move to: </td>
+            <td rowspan="2">Move to: </td>
                 {% if book.id not in wish_list_ids %}
                 <td><a href="/add_to_wish_list/{{ book.id }}">Wish List</a>
                 </td>
                 {% endif %}
             </td>
             {% endif %}
+        </tr>
+        <tr>
+             {% if book.username != request.user %}
+            <td>
+                {% if book.id not in shopping_cart_ids %}
+                <a href="/add_to_cart/{{ book.id }}">
+                    Add to Cart
+                </a>
+                {% endif %}
+                <br>
+            </td>
+            {% endif %}
+
+
         </tr>
     </table>
 </div>
