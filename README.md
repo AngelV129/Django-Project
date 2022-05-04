@@ -8,7 +8,7 @@ Group project for Software Engineering course at California State University Los
 
 (3) Reformat --- In Progress
 
-+ Pages that need boostrap details
++ Pages that need bookstrap details
     + search a book -- Done
     + aboutUs -- needs header Color
     + Display Books
