@@ -31,4 +31,4 @@ Choose 3 feature from below:
 
 (6) shopping cart -- Done
 
-(7) Registe --In process
+(7) Registe --  Done
