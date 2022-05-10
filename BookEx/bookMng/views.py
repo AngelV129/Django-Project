@@ -242,6 +242,6 @@ def add_to_wish_list(request, book_id):
 
 @login_required(login_url=reverse_lazy('login'))
 def remove_from_wish_list(request, book_id):
-    WishList.objects.get(b_id=book_id).delete()
+    WishList.objects.get(b_id=book_id, username=request.user).delete()
     return HttpResponseRedirect('/wish_list')
 
