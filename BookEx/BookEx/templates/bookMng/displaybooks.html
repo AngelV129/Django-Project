@@ -16,16 +16,23 @@ Display Books
 
 {% block content %}
 <h1 align="center"> Display Books </h1>
-
-<table align="center" border="2"  width="400">
+<div class="container">
+    <table class="table table-striped">
     {% for book in books %}
        <tr>
            <td>
                <a href="book_detail/{{ book.id }}"> {{ book.name }}</a>
            </td>
+            <td>
+                {{ book.id }}
+           </td>
+
+            <td colspan='2' >
+               <img src="{% static book.pic_path %}" width="50" height="50" class="rounded mx-auto d-block"/>
+           </td>
 
            <td>
-               {{ book.price }}
+               ${{ book.price }}
            </td>
             {% if book.username != request.user %}
            <td>
@@ -45,5 +52,7 @@ Display Books
        </tr>
     {% endfor %}
 </table>
+</div>
+
 
 {% endblock content %}

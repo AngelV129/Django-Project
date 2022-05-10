@@ -16,21 +16,26 @@ My Books
 
 {% block content %}
 <h1 align="center"> My Books </h1>
+    <div class="container">
+        <table class="table table-striped">
+            {% for book in books %}
+               <tr>
+                   <td>
+                       <a href="book_detail/{{ book.id }}"> {{ book.name }}</a>
+                   </td>
+                    <td colspan='2' >
+                       <img src="{% static book.pic_path %}" width="50" height="50" class="rounded mx-auto d-block"/>
+                   </td>
 
-<table align="center" border="2"  width="400">
-    {% for book in books %}
-       <tr>
-           <td>
-               <a href="book_detail/{{ book.id }}"> {{ book.name }}</a>
-           </td>
+                   <td>
+                       ${{ book.price }}
+                   </td>
+                   <td>
+                       <a href="book_delete/{{ book.id }}"> Delete </a>
+                   </td>
+               </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-           <td>
-               {{ book.price }}
-           </td>
-           <td>
-               <a href="book_delete/{{ book.id }}"> Delete </a>
-           </td>
-       </tr>
-    {% endfor %}
-</table>
 {% endblock content %}

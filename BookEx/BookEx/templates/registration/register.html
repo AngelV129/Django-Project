@@ -16,17 +16,19 @@ User Registration
 {% block content %}
 <h1 align="center"> User Registration</h1>
 
-<p> Register Your Account </p>
-<form action=""  method="post" >
-  <table>
-      {{ form.as_table }}
-      <tr>
-          <td>
-              <input type="submit" value="Submit">
-          </td>
-      </tr>
-  </table>
-    <input type="hidden" name="next" value="{{ next }}"/>
-  {% csrf_token %}
-</form>
+    <div class="container">
+        <form action=""  method="post" >
+          <table class="table table-hover table-regular bg-light mt-4">
+              {{ form.as_table }}
+              <tr>
+                  <td>
+                      <input type="submit" value="Submit">
+                  </td>
+              </tr>
+          </table>
+            <input type="hidden" name="next" value="{{ next }}"/>
+          {% csrf_token %}
+        </form>
+    </div>
+
 {% endblock content %}
