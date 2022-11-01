@@ -2,7 +2,7 @@
 Group project for Software Engineering course at California State University Los Angeles
 
 #### Description
-    A simple website made to mimic an online Book store. Users can search for book sales. Post books for sale. Leave comments on book detail page. Add books to wish list and shopping cart.
+A simple website made to mimic an online Book store. Users can search for book sales. Post books for sale. Leave comments on book detail page. Add books to wish list and shopping cart.
 
 ### Features that are to be added.
 (1) AboutUS --- Finished  
