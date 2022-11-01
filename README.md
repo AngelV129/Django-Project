@@ -1,6 +1,9 @@
 # Django-Project
 Group project for Software Engineering course at California State University Los Angeles
 
+#### Description
+    A simple website made to mimic an online Book store. Users can search for book sales. Post books for sale. Leave comments on book detail page. Add books to wish list and shopping cart.
+
 ### Features that are to be added.
 (1) AboutUS --- Finished  
 
@@ -10,12 +13,12 @@ Group project for Software Engineering course at California State University Los
 
 + Pages that need bookstrap details
     + search a book -- Done
-    + aboutUs -- needs header Color
-    + Display Books
-    + Book Detail
-    + shopping cart
-    + wish List
-    + Messege Box with comments
+    + aboutUs -- -- Done
+    + Display Books -- Done
+    + Book Detail -- Done
+    + shopping cart -- Done
+    + wish List -- Done
+    + Messege Box with comments -- Done
 
 https://www.w3schools.com/css/css_navbar.asp (Links to an external site.)
 
